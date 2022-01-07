@@ -1,3 +1,6 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+export * from './atoms';
+export * from './helpers';
+export * from './hooks';
+export * from './molecules';
+export * from './organisms';
+export * from './templates';

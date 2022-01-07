@@ -1,19 +1,35 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from '@vahesaroyan/atoms';
+import { SafeAreaView, StyleSheet, TextInput, View } from 'react-native';
+import { keys, SearchTemplate } from '@vahesaroyan/atoms';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    const example = { a: 1, b: 2 };
+    keys(example).forEach((item) => item);
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <SearchTemplate
+        header={<View style={[styles.box, { backgroundColor: 'blue' }]} />}
+        body={
+          <>
+            <View style={styles.box} />
+            <View style={styles.box} />
+            <View style={styles.box} />
+            <View style={styles.box} />
+            <View style={styles.box} />
+            <View style={styles.box} />
+            <View style={styles.box} />
+          </>
+        }
+        footer={
+          <TextInput style={[styles.box, { backgroundColor: 'orange' }]} />
+        }
+        scrollable
+      />
+    </SafeAreaView>
   );
 }
 
@@ -24,8 +40,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    width: '100%',
+    height: 50,
+    backgroundColor: 'red',
+    marginTop: 10,
   },
 });
